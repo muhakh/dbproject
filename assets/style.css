@@ -1,0 +1,19 @@
+.product
+{
+  margin-bottom: 10px;
+  border: 1px solid #111;
+}
+a.add_to_cart
+{
+  background-color: #333;
+  border: 1px solid #333;
+  color: #fff;
+  display: block;
+  text-align: center;
+  padding: 5px 0;
+}
+a.add_to_cart:hover
+{
+  background-color: #fff;
+  color: #333
+}

@@ -1,0 +1,96 @@
+CREATE TABLE IF NOT EXISTS User (
+  ID            INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  FirstName     VARCHAR(64),
+  LastName      VARCHAR(64),
+  Email         VARCHAR(256) UNIQUE,
+  Password      VARCHAR(256),
+  Address       VARCHAR(1024),
+  BankAccountNo VARCHAR(256)
+);
+
+CREATE INDEX X_User_Email
+  ON User (Email);
+
+
+CREATE TABLE IF NOT EXISTS UserPhone (
+  PhoneNumber VARCHAR(20) PRIMARY KEY NOT NULL,
+  UserID      INTEGER,
+  FOREIGN KEY (UserID) REFERENCES User (ID)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+);
+
+CREATE INDEX X_UserPhone_PhoneNumber
+  ON UserPhone (PhoneNumber);
+
+CREATE TABLE IF NOT EXISTS Customer (
+  UserID  INTEGER PRIMARY KEY NOT NULL,
+  Balance DECIMAL(10, 2),
+  FOREIGN KEY (UserID) REFERENCES User (ID)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS Supplier (
+  UserID      INTEGER PRIMARY KEY NOT NULL,
+  CompanyName VARCHAR(256),
+  FOREIGN KEY (UserID) REFERENCES User (ID)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS Product (
+  ID                 INTEGER PRIMARY KEY NOT NULL  AUTO_INCREMENT,
+  Name               VARCHAR(256),
+  Description        VARCHAR(4096),
+  Price              DECIMAL(8, 2)       NOT NULL,
+  AvailableQuantitiy INTEGER                       DEFAULT 0,
+  SupplierID         INTEGER,
+  FOREIGN KEY (SupplierID) REFERENCES Supplier (UserID)
+    ON DELETE RESTRICT
+    ON
+    UPDATE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS Orders (
+  ID              INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  UserID          INTEGER,
+  OrderDate       DATETIME,
+  Status          VARCHAR(10),
+  ShippingName    VARCHAR(256),
+  ShippingAddress VARCHAR(2048),
+  ShippingPhone   VARCHAR(20),
+  FOREIGN KEY (UserID) REFERENCES User (ID)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS OrderItem (
+  OrderID   INTEGER NOT NULL,
+  ProductID INTEGER NOT NULL,
+  Quantity  INTEGER DEFAULT 1,
+  PRIMARY KEY (OrderID, ProductID),
+  FOREIGN KEY (OrderID) REFERENCES Orders (ID)
+    ON DELETE
+    CASCADE
+    ON UPDATE CASCADE,
+  FOREIGN KEY (ProductID) REFERENCES Product (ID)
+    ON DELETE
+    CASCADE
+    ON UPDATE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS CartItem (
+  UserID    INTEGER NOT NULL,
+  ProductID INTEGER NOT NULL,
+  Quantity  INTEGER DEFAULT 0,
+  PRIMARY KEY (UserID, ProductID),
+  FOREIGN KEY (UserID) REFERENCES User (ID)
+    ON DELETE
+    CASCADE
+    ON UPDATE CASCADE,
+  FOREIGN KEY (ProductID) REFERENCES Product (ID)
+    ON DELETE
+    CASCADE
+    ON UPDATE CASCADE
+);
