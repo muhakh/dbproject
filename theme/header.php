@@ -3,7 +3,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>E-commerce</title>
+    <title>dbproject</title>
     <link rel="stylesheet" href="<?php echo $home_url;?>/assets/bootstrap.min.css" type='text/css' media='all' />
     <link rel="stylesheet" href="<?php echo $home_url;?>/assets/style.css" type='text/css' media='all' />
 
@@ -22,7 +22,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="<?php echo $home_url;?>">E-commerce</a>
+      <a class="navbar-brand" href="<?php echo $home_url;?>">dbproject</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->

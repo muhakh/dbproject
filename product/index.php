@@ -1,8 +1,8 @@
 <?php
 if (isset($_GET['id'])):
 require_once 'product_unit.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/e-commerce/theme/header.php';
-$home_url = $_SERVER['DOCUMENT_ROOT'] . '/e-commerce/'
+require_once $_SERVER['DOCUMENT_ROOT'] . '/dbproject/theme/header.php';
+$home_url = $_SERVER['DOCUMENT_ROOT'] . '/dbproject/'
 ?>
 <?php
 $product_object = new ProductUnit();
@@ -37,6 +37,6 @@ function check_quantity(field) {
 </html>
 <?php
 else:
-  require_once $_SERVER['DOCUMENT_ROOT'] . '/e-commerce/404.php';
+  require_once $_SERVER['DOCUMENT_ROOT'] . '/dbproject/404.php';
 endif;
 ?>

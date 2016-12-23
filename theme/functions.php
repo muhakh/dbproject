@@ -11,5 +11,5 @@ function is_logged_in()
     return false;
   }
 }
-$home_url = 'http://127.0.0.1/e-commerce'
+$home_url = 'http://127.0.0.1/dbproject'
 ?>
