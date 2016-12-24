@@ -29,11 +29,11 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <?php if(!is_logged_in()):?>
-        <li><a href="<?php echo $home_url;?>/login.php">Login</a></li>
-        <li><a href="<?php echo $home_url;?>/signup.php">Sign Up</a></li>
+        <li><a href="<?php echo $home_url;?>/user/login.php">Login</a></li>
+        <li><a href="<?php echo $home_url;?>/user/signup.php">Sign Up</a></li>
       <?php else:?>
-        <li><a href="<?php echo $home_url;?>/cart.php">Cart</a></li>
-        <li><a href="<?php echo $home_url;?>/settings.php">Settings</a></li>
+        <li><a href="<?php echo $home_url;?>/cart">Cart</a></li>
+        <li><a href="<?php echo $home_url;?>/settings">Settings</a></li>
       <?php endif; ?>
       </ul>
       <form class="navbar-form navbar-right" action="<?php echo $home_url;?>/search.php" method="post">

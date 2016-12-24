@@ -29,15 +29,58 @@ class EUnit
    * @param string  $condition  The conditions of selecting data
    * @param string  $table      The table to select data from
    */
-  public function getData($id_name, $id_value, $table)
+  public function getData($whereArray, $table, $join=null, $select = array('*'))
   {
     $query = new Query();
-    $query->select();
+    $query->select($select);
     $query->from(array($table));
-    $query->where($id_name . ' = ' . $id_value);
+    foreach ($whereArray as $key => $value)
+    {
+      $query->where($key . ' = ' . $value);
+    }
+    if($join != null)
+    {
+      $query->join($join['type'], $join['table'], $join['on']);
+    }
     $query->setQuery();
     $this->db->setQuery($query->getQuery());
     $this->db->execute();
     return $this->db->getData();
+  }
+  public function insertData($table, $values = array(), $columns = array())
+  {
+    $query = new Query();
+    $query->insert($table, $columns, $values);
+    $query->setQuery();
+    $this->db->setQuery($query->getQuery());
+    $this->db->execute();
+    return $this->db->is_succeed();
+  }
+  public function updateData($table, $setArray)
+  {
+    $query = new Query();
+    $set = "";
+    foreach ($setArray as $key => $value)
+    {
+      $set .= $key . ' = ' . $value . ' ';
+    }
+    $query->update($table, $set);
+    $query->setQuery();
+    $this->db->setQuery($query->getQuery());
+    $this->db->execute();
+    return $this->db->is_succeed();
+  }
+  public function removeData($table, $whereArray)
+  {
+    $query = new Query();
+    $query->delete($table);
+    foreach ($whereArray as $key => $value)
+    {
+      $query->where($key . ' = ' . $value);
+    }
+    $query->setQuery();
+    $this->db->setQuery($query->getQuery());
+    $this->db->execute();
+    return $this->db->is_succeed();
   }
 }

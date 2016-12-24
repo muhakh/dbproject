@@ -32,7 +32,7 @@ class Query
   {
     $cols = implode(",", $columns);
     $val  = implode('","', $values);
-    $this->type['insert'] = 'INSERT INTO ' . $table . ' ' . $columns . ' VALUES' . '("'.$val.'")';
+    $this->type['insert'] = 'INSERT INTO ' . $table . ' (' . $cols . ') VALUES' . '("'.$val.'")';
   }
   public function delete($from)
   {
@@ -115,11 +115,13 @@ class Query
   }
   public function limit($value)
   {
-    $this->limit = 'LIMIT ' . (string)$value;
+    if($value != null)
+      $this->limit = 'LIMIT ' . (string)$value;
   }
   public function offset($value)
   {
-    $this->offset = 'OFFSET ' . (string)$value;
+    if($value != null)
+      $this->offset = 'OFFSET ' . (string)$value;
   }
   public function setQuery()
   {

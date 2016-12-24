@@ -11,6 +11,7 @@ class db
   private $pdo;
   private $query;
   private $data = null;
+  private $execute_return = null;
   /**
    * Database class constructor
    * @param array $connection_data contains connection data
@@ -36,11 +37,16 @@ class db
   {
     $q = $this->pdo->prepare($this->query);
     $q->execute();
+    $this->execute_return = $q->errorInfo();
     $this->data = $q->fetchAll(PDO::FETCH_ASSOC);
   }
   public function getData()
   {
     return $this->data;
+  }
+  public function is_succeed()
+  {
+    return $this->execute_return;
   }
 }
 ?>

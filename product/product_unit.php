@@ -9,14 +9,10 @@ class ProductUnit extends EUnit
   }
   public function getData($id)
   {
-    $query = new Query();
-    $query->select(array("ID", "Name", "Description", "Price", "AvailableQuantitiy", "CompanyName"));
-    $query->from(array('Product'));
-    $query->join('INNER', 'Supplier', 'Product.SupplierID=Supplier.UserID');
-    $query->where("ID" . ' = ' . $id);
-    $query->setQuery();
-    $this->db->setQuery($query->getQuery());
-    $this->db->execute();
-    return $this->db->getData();
+    $select = array("ID", "Name", "Description", "Price", "AvailableQuantitiy", "CompanyName");
+    $table = 'Product';
+    $where = array('ID' => $id);
+    $join = array('type' => 'INNER', 'table' => 'Supplier', 'on' => 'Product.SupplierID=Supplier.UserID');
+    return parent::getData($where, $table, $join, $select);
   }
 }

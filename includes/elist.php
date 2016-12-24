@@ -6,7 +6,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/dbproject/config.php';
  */
 class EList
 {
-  private $db;
+  protected $db;
   /**
    * EUserModelList constructor
    * @param $db -> PDO database object
@@ -29,7 +29,7 @@ class EList
    * @param string  $condition  The conditions of selecting data
    * @param string  $table      The table to select data from
    */
-  public function getData($range, $offset, $table)
+  public function getData($table, $range = null, $offset = null)
   {
     $query = new Query();
     $query->select();

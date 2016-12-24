@@ -2,7 +2,7 @@
 session_start();
 function is_logged_in()
 {
-  if(isset($_SESSION['login']) && $_SESSION['login'] != '')
+  if(isset($_SESSION['email']) && $_SESSION['email'] != '')
   {
      return true;
   }

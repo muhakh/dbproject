@@ -4,7 +4,7 @@ require_once 'includes/pagination.php';
 $products_list = new EList();
 $page = isset($_GET["page"]) ? (int)$_GET['page'] : 1;
 $offset = 12 * ($page-1);
-$products = $products_list->getData(12, $offset, 'Product');
+$products = $products_list->getData('Product', 12, $offset);
 ?>
 <?php foreach ($products as $product):?>
 <div class="col-md-3 product">

@@ -1,10 +1,10 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . '/dbproject/includes/create_item.php';
-
-class CreateCartItem extends CreateItem
+require_once $_SERVER['DOCUMENT_ROOT'] . '/dbproject/includes/eunit.php';
+class CreateCartItem extends EUnit
 {
-  public function __construct($values, $table  = 'CartItem', $columns = array())
+  public function __construct()
   {
-    parent::__construct($table, $columns, $values);
+    parent::__construct();
   }
+  
 }
