@@ -19,7 +19,7 @@ class EList
                                 'password' => DB_PASSWORD,
                                 'dbname'   => DB_NAME
                                );
-    $this->db = new db($connection_data);
+    $this->db = new dbo($connection_data);
     $this->db->connect();
   }
   /**

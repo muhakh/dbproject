@@ -19,7 +19,7 @@ class EPagination
                                 'password' => DB_PASSWORD,
                                 'dbname'   => DB_NAME
                                );
-    $this->db = new db($connection_data);
+    $this->db = new dbo($connection_data);
     $this->db->connect();
   }
   public function getPagesNumber($range, $table, $id)

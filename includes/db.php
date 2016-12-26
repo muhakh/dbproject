@@ -1,6 +1,6 @@
 <?php
 require_once 'query.php';
-class db
+class dbo
 {
   private $connection = array(
                               'host'     => '',
