@@ -1,5 +1,5 @@
 <?php
-require_once 'db.php';
+require_once 'dbo.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/dbproject/config.php';
 /**
  * Retrieves the data from tables

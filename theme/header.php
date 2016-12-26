@@ -33,6 +33,7 @@
         <li><a href="<?php echo $home_url;?>/user/signup.php">Sign Up</a></li>
       <?php else:?>
         <li><a href="<?php echo $home_url;?>/cart">Cart</a></li>
+        <li><a href="<?php echo $home_url;?>/order">Orders</a></li>
         <li><a href="<?php echo $home_url;?>/settings">Settings</a></li>
       <?php endif; ?>
       </ul>
