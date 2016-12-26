@@ -8,9 +8,9 @@ a.add_to_cart
   background-color: #333;
   border: 1px solid #333;
   color: #fff;
-  display: block;
+  display: inline-block;
   text-align: center;
-  padding: 5px 0;
+  padding: 10px;
 }
 a.add_to_cart:hover
 {

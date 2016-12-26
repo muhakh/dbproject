@@ -19,13 +19,14 @@ require_once 'user.php';
                        $_POST['bankaccount']
                       );
     $result = $user->createNewUser($user_data);
-    if($result[2] != null)
+    if(is_array($result))
     {
       echo $result[2];
     }
     else
     {
       echo "Add new user successfully, Now go to <a href='".$home_url."/user/login.php'>login</a>";
+      $user->createNewCustomer($result[0]);
     }
   }
   else

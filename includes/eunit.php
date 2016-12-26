@@ -53,10 +53,9 @@ class EUnit
     $query->insert($table, $columns, $values);
     $query->setQuery();
     $this->db->setQuery($query->getQuery());
-    $this->db->execute();
-    return $this->db->is_succeed();
+    return $this->db->execute();
   }
-  public function updateData($table, $setArray)
+  public function updateData($table, $setArray, $where)
   {
     $query = new Query();
     $set = "";
@@ -65,6 +64,10 @@ class EUnit
       $set .= $key . ' = ' . $value . ' ';
     }
     $query->update($table, $set);
+    foreach ($where as $key => $value)
+    {
+      $query->where( $key . ' = ' . $value . ' ');
+    }
     $query->setQuery();
     $this->db->setQuery($query->getQuery());
     $this->db->execute();

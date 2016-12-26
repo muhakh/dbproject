@@ -9,7 +9,7 @@ class CartItems extends Eunit
   }
   public function getData($user_email)
   {
-    $select = array("Product.Name", "CartItem.Quantity", "Product.ID");
+    $select = array("Product.Name", "CartItem.Quantity", "Product.ID", "CartItem.UserID", "Product.Price");
     $from = array('User');
     $where = array('User.Email' => $user_email);
     $query = new Query();
@@ -44,13 +44,11 @@ class CartItems extends Eunit
     else
     {
       $q = $p[0]['Quantity'] + $quantity;
-      return parent::updateData('CartItem', array('Quantity' => $q));
+      return parent::updateData('CartItem', array('Quantity' => $q), array('UserID' => $user_id, 'ProductID' => $product_id));
     }
   }
-  public function removeItem($id, $user_email)
+  public function removeItem($id, $user_id)
   {
-    $user = new User();
-    $user_id = $user->getDataByEmail($user_email)[0]['ID'];
     return parent::removeData('CartItem', array('ProductID'=>$id, 'UserID'=> $user_id));
   }
 }

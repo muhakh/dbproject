@@ -39,6 +39,10 @@ class dbo
     $q->execute();
     $this->execute_return = $q->errorInfo();
     $this->data = $q->fetchAll(PDO::FETCH_ASSOC);
+    if($this->execute_return[2] != null)
+      return $this->is_succeed();
+    else
+      return $this->pdo->lastInsertId();
   }
   public function getData()
   {

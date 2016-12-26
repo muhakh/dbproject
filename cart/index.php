@@ -12,18 +12,18 @@ if (isset($_GET['product_id'])):
   if($_GET['task'] == 'add')
   {
     $c = $cart->createNewItem($_GET['product_id'], $_SESSION['email'], $_GET['quantity']);
-    if($c[2] == null)
-      $success = "New Item Added successfully";
-    else
+    if(is_array($c))
       $success = $c[2];
+    else
+      $success = "New Item Added successfully";
   }
   elseif ($_GET['task'] == 'remove')
   {
     $c = $cart->removeItem($_GET['product_id'], $_SESSION['email']);
-    if($c[2] == null)
-      $success = "Item deleted successfully";
-    else
+    if(is_array($c))
       $success = $c[2];
+    else
+      $success = "Item deleted successfully";
   }
   echo "<h1>" . $success ."</h1>";
   require_once 'full_cart.php';

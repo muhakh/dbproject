@@ -37,4 +37,15 @@ class User extends EUnit
                   );
     return parent::insertData('User', $values, $cols);
   }
+  public function createNewCustomer($user_id)
+  {
+    $cols = array('UserID',
+                  'Balance',
+                  );
+    return parent::insertData('Customer', array($user_id, '0'), $cols);
+  }
+  public function getCustomer($user_id)
+  {
+    return parent::getData(array('UserID'=>$user_id), 'Customer');
+  }
 }

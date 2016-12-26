@@ -4,7 +4,7 @@
       <td>#</td>
       <td>Cart Item</td>
       <td>Quantity</td>
-      <td>Order</td>
+      <td>Actions</td>
     </thead>
 <?php
 $cart = new CartItems();
@@ -16,9 +16,14 @@ foreach ($cart_items as $index => $item):
   <td><?php echo $item['Name'];?></td>
   <td><?php echo $item['Quantity'];?></td>
   <td>
-    <a href="<?php echo $home_url;?>/order/?product_id=<?php echo $item['ID'];?>">Complete Order</a> |
     <a style="color:red" href="<?php echo $home_url;?>/cart/?task=remove&product_id=<?php echo $item['ID'];?>">Remove</a>
   </td>
 </tr>
 <?php endforeach;?>
+<tfoot>
+  <td><a class="add_to_cart" href="<?php echo $home_url;?>/order/?task=checkout">Checkout Order</a></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tfoot>
 </table>
