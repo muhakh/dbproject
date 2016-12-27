@@ -61,12 +61,13 @@ class EUnit
     $set = "";
     foreach ($setArray as $key => $value)
     {
-      $set .= $key . ' = ' . $value . ' ';
+      $set .= $key . ' = ' . $value . ',';
     }
+	$set = rtrim($set, ',');
     $query->update($table, $set);
     foreach ($where as $key => $value)
     {
-      $query->where( $key . ' = ' . $value . ' ');
+      $query->where( $key . ' = ' . $value . '');
     }
     $query->setQuery();
     $this->db->setQuery($query->getQuery());

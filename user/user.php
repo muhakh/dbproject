@@ -44,6 +44,18 @@ class User extends EUnit
                   );
     return parent::insertData('Customer', array($user_id, '0'), $cols);
   }
+  public function updateUser($email,$password,$values)
+  {
+    $where = array('Email' => '"' . $email . '"', 'Password' => '"' . $password . '"');
+	$setArray = array('FirstName' => '"'.$values[0].'"',
+                  'LastName' => '"'.$values[1].'"',
+                  'Email'=> '"'.$values[2].'"',
+                  'Password'=> '"'.$values[3].'"',
+                  'Address'=> '"'.$values[4].'"',
+                  'BankAccountNo'=> '"'.$values[5].'"'
+                  );
+	return parent::updateData('User', $setArray, $where);
+  }
   public function getCustomer($user_id)
   {
     return parent::getData(array('UserID'=>$user_id), 'Customer');
