@@ -17,14 +17,8 @@ if (is_logged_in())
                        $_POST['bankaccount']
                       );
     $result = $user->updateUser($_POST['email'],$_POST['oldpassword'],$user_data);
-    if(is_array($result))
-    {
-      echo $result[2];
-    }
-    else
-    {
-      echo "Add new user successfully, Now go to <a href='".$home_url."/user/login.php'>login</a>";
-    }
+	header("Location: " . $home_url . "/settings");
+
 	}
 	else
 	{
